@@ -3,7 +3,7 @@ Each ListNode holds a reference to its previous node
 as well as its next node in the List.
 """
 class ListNode:
-    def __init__(self, value, prev=None, next=None):
+    def __init__(self, value, prev = None, next = None):
         self.prev = prev
         self.value = value
         self.next = next
@@ -13,7 +13,7 @@ Our doubly-linked list class. It holds references to
 the list's head and tail nodes.
 """
 class DoublyLinkedList:
-    def __init__(self, node=None):
+    def __init__(self, node = None):
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
@@ -27,7 +27,20 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
-        pass
+
+        self.length += 1
+
+        new_node = ListNode(value)
+
+        # If it's empty (there's no head or tail)
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            old_head = self.head
+            old_head.prev = new_node
+            self.head = new_node
         
     """
     Removes the List's current head node, making the
@@ -36,6 +49,7 @@ class DoublyLinkedList:
     """
     def remove_from_head(self):
         pass
+        
             
     """
     Wraps the given value in a ListNode and inserts it 
