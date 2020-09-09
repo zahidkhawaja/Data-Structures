@@ -23,6 +23,7 @@ class BSTNode:
             if self.left is None:
                 self.left = BSTNode(value)
             else:
+                # Recursive call of insert method
                 self.left.insert(value)
         # Right case
         elif value >= self.value:
@@ -34,7 +35,22 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # Base case
+        if self.value == target:
+            return True
+        # Left case
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                # Recursive call of contains method
+                return self.left.contains(target)
+        # Right case
+        if target >= self.value:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
     def get_max(self):
@@ -85,8 +101,8 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-# bst.bft_print()
-# bst.dft_print()
+bst.bft_print()
+bst.dft_print()
 
 # print("elegant methods")
 # print("pre order")
