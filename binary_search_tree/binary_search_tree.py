@@ -66,7 +66,16 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        
+        # Call fn on the current value
+        fn(self.value)
+
+        if self.right:
+            # Recursive call of for_each method
+            self.right.for_each(fn)
+        if self.left:
+            self.left.for_each(fn)
+
 
     # Part 2 -----------------------
 
