@@ -176,4 +176,19 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
-        pass
+        # If empty, do nothing
+        if self.head is None and self.tail is None:
+            return None
+        # We start with the head (default max value) and traverse the list.
+        max_value = self.head.value
+
+        # Traversing the LL
+        current = self.head.next
+
+        # We know we have reached the end of the list when self.head.next is None 
+        while current is not None:
+            if current.value > max_value:
+                max_value = current.value
+            # We set current to current.next to keep going (until we exit the loop)
+            current = current.next
+        return max_value
