@@ -134,7 +134,34 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+
+        # If the LL is empty (nothing to delete)
+        if self.head is None and self.tail is None:
+            return None
+        # If only 1 node in the LL (which means nothing is left after deletion)
+        elif self.head is self.tail:
+            self.length -= 1
+            self.head = None
+            self.tail = None
+        # If the node to delete is the head, we first set self.head to 'next' and set the prev to 'none'
+        elif node is self.head:
+            self.length -= 1
+            self.head = self.head.next
+            self.head.prev = None
+        # Similar logic as above applies to tail
+        elif node is self.tail:
+            self.length -= 1
+            self.tail = self.tail.prev
+            self.tail.next = None
+        else: 
+            self.length -= 1
+            # The previous node's 'next' pointer goes to the current node's 'next'
+            # And the next node's 'previous' pointer goes to the current node's 'previous'
+            # Effectively deleting the current node and maintaining order
+            node.prev.next = node.next
+            node.next.prev = node.prev
+
+
 
     """
     Finds and returns the maximum value of all the nodes 
