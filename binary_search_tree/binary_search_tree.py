@@ -83,13 +83,14 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
 
+        # Keep going left to get to the lowest value
         if self.left:
             self.left.in_order_print()
         print(self.value)
 
+        # Keep going right to get the highest value
         if self.right:
             self.right.in_order_print()
-
 
 
     # Print the value of every node, starting with the given node,
@@ -122,6 +123,7 @@ class BSTNode:
         # Add the root node to the stack
         stack.append(self)
 
+        # Once there are no right/left nodes (stack ultimately becomes empty) it's done
         while len(stack) > 0:
             current_node = stack.pop()
             print(current_node.value)
